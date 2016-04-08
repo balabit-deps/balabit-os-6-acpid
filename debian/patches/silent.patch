@@ -1,0 +1,13 @@
+Description: do not print "exiting" message by default
+
+--- acpid-2.0.26.orig/acpid.c
++++ acpid-2.0.26/acpid.c
+@@ -470,7 +470,7 @@ clean_exit_with_status(int status)
+ {
+ 	acpid_cleanup_rules(1);
+ 	delete_all_connections();
+-	acpid_log(LOG_NOTICE, "exiting");
++	acpid_log(LOG_DEBUG, "exiting");
+ 	unlink(pidfile);
+ 	exit(status);
+ }
